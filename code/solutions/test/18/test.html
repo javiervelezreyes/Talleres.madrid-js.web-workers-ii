@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Workers II - Concurrency & Coordination</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>Shared </h1> <div id="shared"></div>
+    <h1>Readers</h1> <div id="readers"></div>
+    <h1>Writers</h1> <div id="writers"></div>
+
+    <div class="buttons">
+      <button id="btnStart">Start</button>
+      <button id="btnStop">Stop</button>
+    </div>
+
+    <script type="module">
+      import { Manager } from './test.js'
+      import { Readers } from './test.js'
+      import { Writers } from './test.js'
+
+      let start = document.getElementById ('btnStart')
+      let stop  = document.getElementById ('btnStop')
+
+      function Start () { Manager.start (), Readers.start (), Writers.start () }
+      function Stop  () { Manager.stop  (), Readers.stop  (), Writers.stop  () }
+
+      start.addEventListener ('click', Start)
+      stop .addEventListener ('click', Stop)
+    </script>
+</body>
+</html>
